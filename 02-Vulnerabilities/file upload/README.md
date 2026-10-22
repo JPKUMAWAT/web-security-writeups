@@ -14,7 +14,7 @@
 9. [ZIP Slip & Decompression Bombs](#9-zip-slip--decompression-bombs)
 10. [XXE in XML Uploads](#10-xxe-in-xml-uploads)
 11. [HTTP PUT Method](#11-http-put-method)
-12. [Bug Bounty Report Template](#12-bug-bounty-report-template)
+12. [References](#12-References)
 
 
 
