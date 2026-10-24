@@ -179,6 +179,8 @@ X-Remote-Addr: 127.0.0.1
 X-Remote-IP: 127.0.0.1
 X-Rewrite-Url: 127.0.0.1
 X-True-IP: 127.0.0.1
+X-Original-URL: /admin/console
+X-Rewrite-URL: /admin/console
 ```
 
 
@@ -486,3 +488,37 @@ Possible result:
 
 - WAF checks `/` (looks harmless) and lets it through.
 - Proxy rewrites to `/api/getUser` internally, where your request is now processed without the original rule hitting.
+
+
+## 403 Forbidden Bypass Tools
+
+### 1. [bypass-403](https://github.com/iamj0ker/bypass-403)
+- **Use:** Test common HTTP request variations and path-based techniques against a 403 response.
+- **When to use:** When an authorized test target returns `403 Forbidden` and you want to check whether access-control rules behave differently with alternative requests.
+
+### 2. [403-bypass](https://github.com/channyein1337/403-bypass/blob/main/403-bypass.py)
+- **Use:** Automate checks for common 403 bypass techniques.
+- **When to use:** During authorized testing to compare how the server responds to different request variations.
+
+### 3. [B1pass3r](https://github.com/nico989/B1pass3r)
+- **Use:** Test alternative request and path variations for potential 403 access-control weaknesses.
+- **When to use:** When a particular endpoint is blocked and you want to investigate whether the restriction is consistently enforced.
+
+### 4. [4-ZERO-3](https://github.com/Dheerajmadhukar/4-ZERO-3)
+- **Use:** Test multiple known 403 bypass approaches.
+- **When to use:** During authorized web security assessments to identify possible inconsistencies in server-side access controls.
+
+## Other Techniques
+
+### 5. Dirsearch — Fuzzing / Content Discovery
+- **Use:** Discover hidden directories and files using a wordlist.
+- **When to use:** When you want to find additional paths that may have different access permissions.
+- **Example:** A site blocks `/admin`, but content discovery identifies other paths worth checking manually.
+
+### 6. Wayback URLs — Historical URL Discovery
+- **Use:** Find URLs previously indexed by the Wayback Machine.
+- **When to use:** When you want to discover older endpoints, directories, or files associated with a target subdomain.
+- **Example:** Historical URLs reveal an old `/api/v1/` route that you can check within the authorized scope.
+
+### Important
+A `403 Forbidden` response does not automatically mean a vulnerability exists. Confirm that any alternative request provides access that should have been denied. Test only systems you own or have explicit permission to assess.
