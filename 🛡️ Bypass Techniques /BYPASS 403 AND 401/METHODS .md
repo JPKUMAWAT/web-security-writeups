@@ -61,7 +61,7 @@ Other HTTP methods to check:
 - PATCH
 - FOO # non existant method also might work
 
-## User-Agent fuzzing
+## 2. User-Agent fuzzing
 
 Next to HTTP Methods/Verbs fuzzing another useful method could be User-Agent fuzzing. Sometimes developers want to serve different content depending on what kind of browser/OS you use to access the web app. In case of misconfiguration you might be able to get access to the resource only by modifying User Agent.
 
@@ -86,7 +86,7 @@ Mozilla/5.0 (X11; U; Linux i686; en-US; rv:0.9.3) Gecko/20010801
 
 See more in the module below\...
 
-## 2. HTTP Headers fuzzing
+## 3. HTTP Headers fuzzing
 
 HTTP Headers fuzzing is another popular method, this technique involves sending a request to the target server with a modified HTTP header. X-Forwarded-For, Referer and Authorization headers are the most popular one to be modified. X-Forwarded-For can be fuzzed to bypass security controls that rely on IP address filtering. By changing the IP address in this header, an attacker can attempt to bypass any security controls that are based on IP address filtering. Example payloads:
 
@@ -194,7 +194,7 @@ X-Rewrite-URL: /admin/console
 
 See more in the module below\...
 
-## Path Fuzzing and creative string literals.
+## 4. Path Fuzzing and creative string literals.
 
 This is another useful method, you can try to bypass 401 or 403 status code by adding symbols to find alternative paths. example.com/admin gives you 403? Try adding `/%2e/` or `/%252e/` to the path: `example.com/%252e/admin` and check results. You can also try other creative literals.
 
@@ -456,7 +456,8 @@ HTTP/2 won’t let you in? Try 1.1. You can also try all other techniques along 
 - 1.1
 - 2
 
-- ## 3. URL Override Headers (Change the Route Internally)
+
+ ## 5. URL Override Headers (Change the Route Internally)
 
 Some proxies support headers that rewrite the URL internally.
 
@@ -490,7 +491,8 @@ Possible result:
 - Proxy rewrites to `/api/getUser` internally, where your request is now processed without the original rule hitting.
 
 
-## 403 Forbidden Bypass Tools
+
+## 6.  403 Forbidden Bypass Tools
 
 ### 1. [bypass-403](https://github.com/iamj0ker/bypass-403)
 - **Use:** Test common HTTP request variations and path-based techniques against a 403 response.
